@@ -109,7 +109,7 @@ def formula_perhitungan(source: list[int], target: int) -> str:
                         result = evaluation(A, op_symbol, B)
                         
                         if result == target:
-                            return f"{str_A} {op_symbol} {str_B} = {target}"
+                            return f"{str_A} {op_symbol} {str_B}"
 
     return "Tidak Ditemukan"
 
