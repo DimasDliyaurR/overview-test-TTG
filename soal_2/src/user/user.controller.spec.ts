@@ -3,7 +3,6 @@ import { UserController } from '@user/user.controller';
 import { UserService } from '@user/user.service';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { UserCreateDTO } from '@user/dto/UserCreate.dto';
-import { UserUpdateDTO } from '@user/dto/UserUpdate.dto';
 
 const mockUser = {
   _id: 'some_id_123',
@@ -88,26 +87,6 @@ describe('UserController', () => {
       expect(result).toEqual({
         statusCode: HttpStatus.OK,
         message: 'User has been create',
-      });
-    });
-  });
-
-  // --- UPDATE USER TESTS ---
-  describe('updateUser', () => {
-    it('should update a user and return success message', async () => {
-      // Arrange
-      const updateDto: UserUpdateDTO = { name: 'Jane Doe', email: "JoeDoe@gmail.com" };
-      const id = 'some_id_123';
-      mockUserService.update.mockResolvedValue({ ...mockUser, ...updateDto });
-
-      // Act
-      const result = await controller.updateUser(id, updateDto);
-
-      // Assert
-      expect(service.update).toHaveBeenCalledWith(id, updateDto);
-      expect(result).toEqual({
-        statusCode: HttpStatus.OK,
-        message: 'User has been update',
       });
     });
   });

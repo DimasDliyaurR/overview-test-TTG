@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Form</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/validate.js"></script>
+    <script src="js/interaction.js"></script>
+</head>
+
+<body>
+    <div class="form-container">
+        <div class="form-card">
+
+            <h1>Daftar Akun</h1>
+
+            <form action="POST" onsubmit="submitForm(event)">
+
+                <!-- START | Nama Lengkap -->
+                <div class="form-group">
+                    <label for="nama_lengkap">Nama Lengkap</label>
+                    <input type="text" name="nama_lengkap" id="nama_lengkap" placeholder="Masukkan nama lengkap">
+                </div>
+                <!-- END | Nama Lengkap -->
+
+                <!-- START | Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Masukkan email">
+                </div>
+                <!-- END | Email -->
+
+                <!-- START | Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" name="password" id="password" placeholder="Minimal 8 karakter"
+                            autocomplete="on">
+                        <button type="button" class="toggle-password" onclick="togglePassword('password')">
+                            <span class="password-toggle">Lihat</span>
+                        </button>
+                    </div>
+                    <div class="password-strength">
+                        <div class="strength-bar">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                        <span class="strength-text" id="strengthText">Kekuatan password</span>
+                    </div>
+                    <span class="error" id="password_ref"></span>
+                </div>
+                <!-- END | Password -->
+
+                <!-- START | Password Confirmation -->
+                <div class="form-group">
+                    <label for="password_confirmation">Konfirmasi Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" name="password_confirmation" id="password_confirmation"
+                            placeholder="Ulangi password" autocomplete="on">
+                        <button type="button" class="toggle-password" onclick="togglePassword('password_confirmation')">
+                            <span class="password-toggle">Lihat</span>
+                        </button>
+                    </div>
+                    <span class="error" id="password_confirmation_ref"></span>
+                </div>
+                <!-- END | Password Confirmation -->
+
+                <button type="submit" class="btn-submit">Daftar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/password_interaction.js"></script>
+</body>
+
+</html>

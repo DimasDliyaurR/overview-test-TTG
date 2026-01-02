@@ -3,7 +3,6 @@ import { UserService } from '@user/user.service';
 import { getModelToken } from '@nestjs/mongoose';
 import { User } from '@user/schema/user.schema';
 import { UserCreateDTO } from '@user/dto/UserCreate.dto';
-import { UserUpdateDTO } from '@user/dto/UserUpdate.dto';
 
 // 1. Definisikan Mock Data
 const mockUser = {
@@ -79,30 +78,6 @@ describe('UserService', () => {
       // Assert
       expect(model.create).toHaveBeenCalledWith(dto);
       expect(result).toEqual(mockUser);
-    });
-  });
-
-  // --- TEST UPDATE ---
-  describe('update', () => {
-    it('should update a user and return the new data', async () => {
-      // Arrange
-      const id = 'some_id_123';
-      const dto: UserUpdateDTO = { name: 'Updated Name', email: "we123@gmail.com" };
-      const updatedUser = { ...mockUser, ...dto };
-
-      mockUserModel.findByIdAndUpdate.mockReturnValue({
-        exec: jest.fn().mockResolvedValue(updatedUser),
-      });
-
-      // Act
-      const result = await service.update(id, dto);
-
-      expect(model.findByIdAndUpdate).toHaveBeenCalledWith(
-        { _id: id },
-        dto,
-        { new: true },
-      );
-      expect(result).toEqual(updatedUser);
     });
   });
 

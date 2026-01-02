@@ -1,8 +1,7 @@
-import { Controller, Get, Post, Header, HttpException, HttpStatus, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Header, HttpException, HttpStatus, Body, Param, Delete } from '@nestjs/common';
 import { UserService } from '@user/user.service';
 import { User } from '@user/schema/user.schema';
 import { UserCreateDTO } from '@user/dto/UserCreate.dto';
-import { UserUpdateDTO } from '@user/dto/UserUpdate.dto';
 
 @Controller('user')
 export class UserController {
@@ -30,16 +29,16 @@ export class UserController {
         }
     }
 
-    @Post("/create")
-    @Header("Content-Type", "application/json")
-    async createUser(@Body() data: UserCreateDTO): Promise<{ statusCode: HttpStatus, message: string } | User[]> {
+    @Get("/:id")
+    async getUserById(@Param("id") id: string): Promise<{ statusCode: HttpStatus, message: string, data: User[] } | User[]> {
         try {
-            const create = await this.UserService.create(data)
+            const user: User[] = await this.UserService.findById(id)
 
-            if (create) {
+            if (user) {
                 return {
                     statusCode: HttpStatus.OK,
-                    message: "User has been create"
+                    message: "Get specific User",
+                    data: user
                 }
             }
         } catch (err) {
@@ -52,16 +51,16 @@ export class UserController {
         }
     }
 
-    @Put("update/:id")
+    @Post("/create")
     @Header("Content-Type", "application/json")
-    async updateUser(@Param("id") id: string, @Body() data: UserUpdateDTO): Promise<{ statusCode: HttpStatus, message: string } | User> {
+    async createUser(@Body() data: UserCreateDTO): Promise<{ statusCode: HttpStatus, message: string } | User[]> {
         try {
-            const update: User = await this.UserService.update(id, data)
+            const create = await this.UserService.create(data)
 
-            if (update) {
+            if (create) {
                 return {
                     statusCode: HttpStatus.OK,
-                    message: "User has been update"
+                    message: "User has been create"
                 }
             }
         } catch (err) {
