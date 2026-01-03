@@ -24,7 +24,7 @@
 	- klik "ctrl + o", lalu pilih **`index.html`** di soal 1
 3. Melalui folder manager
 	- Buka folder soal 1
-	- klik file **`index`**
+	- klik file **`index.html`**
 
 ---
 ## Soal 2
@@ -46,9 +46,9 @@
 	- Python
 
 ## **Cara Penggunaan**
-- Install python 
+- Install python (saya menggunakan versi **`3.13.9`**)
 - buka terminal lalu ketik
-	- **`cd soal_3`**, untuk mengarahkan terminal ke folder `soal_3`
+	- **`cd soal_3`**, untuk mengarahkan terminal ke folder `soal_3` 
 	- **`py cari_angka.py`**, untuk eksekusi Kode
 
 ## Soal 3
@@ -57,7 +57,7 @@
 	- Python
 
 ## **Cara Penggunaan**
-- Install python (saya menggunakan versi `3.13.9`)
+- Install python (saya menggunakan versi **`3.13.9`**)
 - buka terminal lalu ketik
 	- `cd soal_4`, untuk mengarahkan terminal ke folder `soal_3`
 	- `py format_perhitungan.py`, untuk eksekusi Kode
